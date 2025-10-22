@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MarketVerse — Style Guide Test Page</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="marketverse.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="mv-nav">
+    <div class="mv-brand">MARKETVERSE <span>UI</span></div>
+    <a class="active" href="#overview">Overview</a>
+    <a href="#typography">Typography</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#forms">Forms</a>
+    <a href="#components">Components</a>
+    <a href="#tables">Tables</a>
+    <a href="#alerts">Alerts</a>
+    <a href="#footer">Footer</a>
+  </nav>
+
+  <main class="mv-container">
+
+    <!-- OVERVIEW / TOKENS -->
+    <section id="overview" class="mv-section">
+      <header class="mv-section__header">
+        <h1 class="mv-h1">MARKETVERSE STYLE GUIDE — TEST PAGE</h1>
+        <p class="mv-lead">This page demonstrates the full MarketVerse component set with consistent spacing, pill buttons, uppercase headings, tooltips, badges, inputs, tables, and utility classes.</p>
+      </header>
+
+      <div class="mv-grid">
+        <div class="col-6">
+          <div class="mv-card">
+            <h2 class="mv-h2">COLOUR TOKENS</h2>
+            <ul class="mv-swatches">
+              <li><span class="swatch" style="--sw:#2A75FF"></span><code>#2A75FF</code> Primary Blue</li>
+              <li><span class="swatch" style="--sw:#33CC66"></span><code>#33CC66</code> Accent Green</li>
+              <li><span class="swatch" style="--sw:#002855"></span><code>#002855</code> Dark Base</li>
+              <li><span class="swatch" style="--sw:#F0F0F0"></span><code>#F0F0F0</code> Light</li>
+              <li><span class="swatch" style="--sw:#FFFFFF;outline:1px solid #e0e0e0;"></span><code>#FFFFFF</code> White</li>
+              <li><span class="swatch" style="--sw:#101014"></span><code>#101014</code> Text</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="mv-card">
+            <h2 class="mv-h2">SPACING & TYPOGRAPHY</h2>
+            <p><strong>Base spacing:</strong> <code>var(--mv-space) = 24px</code> used for section padding, grid gaps, and card spacing.</p>
+            <p><strong>Headings:</strong> League Gothic, UPPERCASE. <strong>Body:</strong> Segoe UI (system on Windows).</p>
+            <div class="mv-type-scale">
+              <div><div class="mv-h1">H1 — SECTION TITLE</div></div>
+              <div><div class="mv-h2">H2 — CARD TITLE</div></div>
+              <div><div class="mv-h3">H3 — SUBTITLE</div></div>
+              <p>Body text — 16px, line-height 1.5. Use <span class="mv-tip">tooltips<span class="mv-tooltip">Helpful hints appear on hover using dark background and white text.</span></span> for inline help.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section id="typography" class="mv-section">
+      <header class="mv-section__header">
+        <h2 class="mv-h2">TYPOGRAPHY</h2>
+      </header>
+      <div class="mv-card">
+        <div class="mv-grid">
+          <div class="col-6">
+            <h3 class="mv-h3">HEADINGS</h3>
+            <div class="mv-stack">
+              <div class="mv-h1">MARKETVERSE — H1</div>
+              <div class="mv-h2">MARKETVERSE — H2</div>
+              <div class="mv-h3">MARKETVERSE — H3</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <h3 class="mv-h3">BODY & LISTS</h3>
+            <p>Standard paragraph showing <strong>bold</strong>, <em>emphasis</em>, and <a href="#">links</a>. Line height is comfortable and easy to read.</p>
+            <ul class="mv-list">
+              <li>Consistent spacing</li>
+              <li>Readable contrast</li>
+              <li>Accessible focus states</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section id="buttons" class="mv-section">
+      <header class="mv-section__header">
+        <h2 class="mv-h2">BUTTONS</h2>
+      </header>
+      <div class="mv-card">
+        <div class="mv-stack mv-stack--row">
+          <button class="mv-btn mv-btn--primary"><span class="dot"></span>Primary</button>
+          <button class="mv-btn mv-btn--success"><span class="dot"></span>Confirm</button>
+          <button class="mv-btn mv-btn--dark">Secondary</button>
+          <button class="mv-btn" disabled>Disabled</button>
+        </div>
+        <div class="mv-stack mv-stack--row">
+          <button class="mv-btn mv-btn--primary" data-loading>Run Job</button>
+          <button class="mv-btn mv-btn--dark" id="toastBtn">Show Toast</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section id="forms" class="mv-section">
+      <header class="mv-section__header">
+        <h2 class="mv-h2">FORMS & INPUTS</h2>
+      </header>
+      <div class="mv-card">
+        <form class="mv-form">
+          <div class="mv-grid">
+            <div class="col-4">
+              <label class="mv-label" for="env">Environment</label>
+              <input id="env" class="mv-input" placeholder="sandbox / production">
+            </div>
+            <div class="col-4">
+              <label class="mv-label" for="appid">Application ID</label>
+              <input id="appid" class="mv-input" placeholder="sq0idp-XXXXXXXXXXXX">
+            </div>
+            <div class="col-4">
+              <label class="mv-label" for="token">Access Token</label>
+              <input id="token" class="mv-input" placeholder="EAAA-************************">
+            </div>
+            <div class="col-12">
+              <label class="mv-label" for="notes">Notes</label>
+              <textarea id="notes" class="mv-textarea" rows="4" placeholder="Write something helpful…"></textarea>
+            </div>
+          </div>
+          <div class="mv-stack mv-stack--row">
+            <button type="button" class="mv-btn mv-btn--primary">Save</button>
+            <button type="button" class="mv-btn mv-btn--dark">Test Connection</button>
+            <button type="reset" class="mv-btn mv-btn--success">Clear</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components" class="mv-section">
+      <header class="mv-section__header">
+        <h2 class="mv-h2">COMPONENTS</h2>
+      </header>
+
+      <div class="mv-grid">
+        <div class="col-6">
+          <div class="mv-card">
+            <h3 class="mv-h3">STATUS BADGES</h3>
+            <div class="mv-badges">
+              <span class="mv-badge mv-badge--ok"><span class="pulse"></span> CONNECTED</span>
+              <span class="mv-badge mv-badge--info"><span class="pulse"></span> SYNC IDLE</span>
+              <span class="mv-badge mv-badge--warn"><span class="pulse"></span> PENDING</span>
+              <span class="mv-badge mv-badge--err"><span class="pulse"></span> ERROR</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="mv-card">
+            <h3 class="mv-h3">TABS</h3>
+            <div class="mv-tabs" data-tabs>
+              <div class="mv-tabs__list">
+                <button class="mv-tab is-active" data-tab="one">Connect</button>
+                <button class="mv-tab" data-tab="two">Products</button>
+                <button class="mv-tab" data-tab="three">Inventory</button>
+              </div>
+              <div class="mv-tabs__panels">
+                <div class="mv-tabpanel is-active" data-panel="one">
+                  <p>Save credentials and test authentication.</p>
+                </div>
+                <div class="mv-tabpanel" data-panel="two">
+                  <p>Run product/item sync from Square to Woo and back.</p>
+                </div>
+                <div class="mv-tabpanel" data-panel="three">
+                  <p>Two-way stock updates across locations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-grid">
+        <div class="col-12">
+          <div class="mv-card">
+            <h3 class="mv-h3">PROGRESS & LOADING</h3>
+            <div class="mv-stack mv-stack--row">
+              <button class="mv-btn mv-btn--primary" id="startJobBtn">Start Job</button>
+              <div class="mv-progress">
+                <div class="mv-progress__bar" id="progressBar" style="width:0%"></div>
+              </div>
+              <span class="mv-progress__label" id="progressLabel">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLES -->
+    <section id="tables" class="mv-section">
+      <header class="mv-section__header">
+        <h2 class="mv-h2">TABLES</h2>
+      </header>
+      <div class="mv-card">
+        <div class="mv-tablewrap">
+          <table class="mv-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>SKU</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sample Product A</td>
+                <td>MV-1001</td>
+                <td>$19.99</td>
+                <td>22</td>
+                <td><span class="mv-badge mv-badge--ok">ACTIVE</span></td>
+              </tr>
+              <tr>
+                <td>Sample Product B</td>
+                <td>MV-1002</td>
+                <td>$12.50</td>
+                <td>0</td>
+                <td><span class="mv-badge mv-badge--warn">LOW</span></td>
+              </tr>
+              <tr>
+                <td>Sample Product C</td>
+                <td>MV-1003</td>
+                <td>$7.95</td>
+                <td>—</td>
+                <td><span class="mv-badge mv-badge--err">ERROR</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTS -->
+    <section id="alerts" class="mv-section">
+      <header class="mv-section__header">
+        <h2 class="mv-h2">ALERTS & CALLOUTS</h2>
+      </header>
+      <div class="mv-grid">
+        <div class="col-4">
+          <div class="mv-alert mv-alert--info">
+            <strong>Info:</strong> This is an informational message.
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mv-alert mv-alert--warn">
+            <strong>Warning:</strong> Something needs attention.
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mv-alert mv-alert--err">
+            <strong>Error:</strong> The sync failed to complete.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="mv-footer">
+    <div class="mv-tagline">MarketVerse — Collaborate. Promote. Expand.</div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="mv-toast" id="toast" role="status" aria-live="polite">Saved successfully.</div>
+
+  <!-- Scripts -->
+  <script src="marketverse.js"></script>
+</body>
+</html>
