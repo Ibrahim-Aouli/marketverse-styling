@@ -337,3 +337,28 @@ a:hover{text-decoration:underline;}
   color: rgba(255,255,255,0.6);
   font-style: italic;
 }
+
+.mv-log-details {
+  background: #f8f8f8;
+  border-left: 3px solid var(--mv-accent, #33cc66);
+  margin: 4px 0 8px 1.5rem;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  list-style: none;
+  line-height: 1.4;
+  border-radius: 4px;
+}
+
+.mv-log-details li {
+  padding: 2px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.mv-log-details li:last-child {
+  border-bottom: none;
+}
+
+.mv-log-details strong {
+  color: var(--mv-accent-dark, #002855);
+  font-weight: 600;
+}
