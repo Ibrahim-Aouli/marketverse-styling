@@ -143,6 +143,7 @@
         logs.forEach(log => {
           const wrap = document.createElement('div');
           wrap.className = 'mv-log-item';
+          wrap.dataset.type = log.type || 'info';
           wrap.addEventListener('click', () => wrap.classList.toggle('is-expanded'));
 
           const head = document.createElement('div');

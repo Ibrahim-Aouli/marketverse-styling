@@ -272,93 +272,107 @@ a:hover{text-decoration:underline;}
 }
 
 /* ===========================
-   LOG VIEWER
+   LOG VIEWER — COMPACT STYLE
    =========================== */
 .mv-log {
-  background: var(--mv-dark);
-  color: var(--mv-white);
-  font-family: Consolas, monospace;
+  background: #0e1420;
+  color: #dfe4ec;
+  font-family: "Consolas", "Courier New", monospace;
   border-radius: var(--mv-radius);
-  padding: 16px;
-  max-height: 420px;
+  padding: 10px 14px;
+  max-height: 460px;
   overflow-y: auto;
   box-shadow: var(--mv-shadow-sm);
+  font-size: 13px;
+  line-height: 1.35;
 }
 
+/* Each log entry */
 .mv-log-item {
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 8px 6px;
-  cursor: pointer;
-  transition: background 0.15s ease;
+  border-left: 3px solid transparent;
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  transition: background 0.15s ease, border-color 0.2s ease;
 }
 .mv-log-item:hover { background: rgba(255,255,255,0.05); }
+.mv-log-item.is-expanded { background: rgba(255,255,255,0.07); }
 
+/* Header line */
 .mv-log-summary {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.mv-log-time {
-  color: rgba(255,255,255,0.6);
-  font-size: 0.85em;
-  min-width: 140px;
-}
-
+.mv-log-icon { font-size: 1rem; width: 1.4em; text-align: center; opacity: 0.9; }
+.mv-log-time { color: rgba(255,255,255,0.5); font-size: 0.85em; min-width: 120px; }
 .mv-log-label {
   flex: 1;
-  font-weight: 600;
-  letter-spacing: 0.2px;
+  color: #fff;
+  letter-spacing: 0.1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.mv-log-icon {
-  width: 1.2em;
-}
-
+/* Compact details list */
 .mv-log-details {
   display: none;
-  background: rgba(255,255,255,0.05);
-  margin-top: 6px;
-  padding: 10px;
-  border-left: 3px solid var(--mv-blue);
-  border-radius: 6px;
-  white-space: pre-wrap;
-  overflow-x: auto;
-  font-size: 13px;
-  line-height: 1.4;
+  background: rgba(255,255,255,0.04);
+  margin-top: 4px;
+  padding: 6px 10px;
+  border-left: 2px solid var(--mv-blue);
+  border-radius: 4px;
+  list-style: none;
+  font-size: 12.5px;
+  color: #cfd5df;
+}
+.mv-log-item.is-expanded .mv-log-details { display: block; }
+
+.mv-log-details li {
+  display: flex;
+  gap: 6px;
+  padding: 1px 0;
+  border-bottom: 1px dotted rgba(255,255,255,0.08);
+}
+.mv-log-details li:last-child { border-bottom: none; }
+.mv-log-details strong {
+  color: var(--mv-green);
+  min-width: 140px;
+  flex-shrink: 0;
+  text-transform: capitalize;
+  font-weight: 600;
 }
 
-.mv-log-item.is-expanded .mv-log-details { display: block; }
+/* Type colors (border + subtle tint) */
+.mv-log-item[data-type="info"]    { border-color: var(--mv-blue); }
+.mv-log-item[data-type="success"] { border-color: var(--mv-green); }
+.mv-log-item[data-type="warn"]    { border-color: #ffcc33; }
+.mv-log-item[data-type="error"]   { border-color: #ff5555; }
+.mv-log-item[data-type="sync"]    { border-color: #9d6fff; }
+.mv-log-item[data-type="action"]  { border-color: #2ac9a8; }
+.mv-log-item[data-type="system"]  { border-color: #4aa3ff; }
 
 .mv-log-empty {
   text-align: center;
-  padding: 24px;
-  color: rgba(255,255,255,0.6);
+  padding: 20px;
+  color: rgba(255,255,255,0.5);
   font-style: italic;
+  font-size: 13px;
 }
 
-.mv-log-details {
-  background: #f8f8f8;
-  border-left: 3px solid var(--mv-accent, #33cc66);
-  margin: 4px 0 8px 1.5rem;
-  padding: 6px 10px;
-  font-size: 12.5px;
-  list-style: none;
-  line-height: 1.4;
-  border-radius: 4px;
+.mv-log::-webkit-scrollbar {
+  width: 8px;
 }
-
-.mv-log-details li {
-  padding: 2px 0;
-  border-bottom: 1px dashed #ddd;
+.mv-log::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
 }
-
-.mv-log-details li:last-child {
-  border-bottom: none;
-}
-
-.mv-log-details strong {
-  color: var(--mv-accent-dark, #002855);
-  font-weight: 600;
+.mv-log::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.25);
 }

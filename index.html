@@ -274,13 +274,120 @@
       </div>
     </section>
 
-    <section id="logs" class="mv-section">
+    <!-- LOG SHOWCASE -->
+    <section id="log-showcase" class="mv-section">
       <header class="mv-section__header">
-        <h2 class="mv-h2">Debug & Logs</h2>
+        <h2 class="mv-h2">Log Examples — MarketVerse Sync Diagnostics</h2>
+        <p class="mv-lead">Below are examples of every log type — info, success, warning, error, sync, action, and data comparisons — styled consistently with the MarketVerse interface.</p>
       </header>
+
       <div class="mv-card">
-        <div id="mv-log" class="mv-log">
-          <div class="mv-log-empty">No log entries yet.</div>
+        <div id="mv-log-demo" class="mv-log">
+          <!-- Info -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">ℹ️</span>
+              <span class="mv-log-time">2025-10-27 18:41:00</span>
+              <span class="mv-log-label">Fetching products from Square…</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Endpoint</strong>: /v2/catalog/list</li>
+              <li><strong>Type</strong>: ITEM</li>
+              <li><strong>Status</strong>: OK (200)</li>
+            </ul>
+          </div>
+
+          <!-- Success -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">✔️</span>
+              <span class="mv-log-time">2025-10-27 18:41:12</span>
+              <span class="mv-log-label">Square → Woo Sync Completed</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Items Processed</strong>: 512</li>
+              <li><strong>Items Updated</strong>: 34</li>
+              <li><strong>Newly Created</strong>: 12</li>
+              <li><strong>Unchanged</strong>: 466</li>
+              <li><strong>Duration</strong>: 2m 18s</li>
+            </ul>
+          </div>
+
+          <!-- Warning -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">⚠️</span>
+              <span class="mv-log-time">2025-10-27 18:42:10</span>
+              <span class="mv-log-label">Missing SKU on Square Item</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Item Name</strong>: Untitled Product</li>
+              <li><strong>Square ID</strong>: 9ABCDEF1234</li>
+              <li><strong>Resolution</strong>: Skipped — requires SKU</li>
+            </ul>
+          </div>
+
+          <!-- Error -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">❌</span>
+              <span class="mv-log-time">2025-10-27 18:43:32</span>
+              <span class="mv-log-label">Failed to Update Woo Product</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Woo ID</strong>: 13490</li>
+              <li><strong>SKU</strong>: 8TX6YY7KZG</li>
+              <li><strong>Reason</strong>: 403 Forbidden — invalid API credentials</li>
+            </ul>
+          </div>
+
+          <!-- Sync -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">🔄</span>
+              <span class="mv-log-time">2025-10-27 18:44:01</span>
+              <span class="mv-log-label">Sync Comparison → Our Philosophy [SS-13507]</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Woo Price</strong>: $25.00</li>
+              <li><strong>Square Price</strong>: $27.50</li>
+              <li><strong>Woo Stock</strong>: 12</li>
+              <li><strong>Square Stock</strong>: 10</li>
+              <li><strong>Action</strong>: Update Woo Product</li>
+            </ul>
+          </div>
+
+          <!-- Action -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">⚙️</span>
+              <span class="mv-log-time">2025-10-27 18:45:18</span>
+              <span class="mv-log-label">Item Created in WooCommerce</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Woo ID</strong>: 13671</li>
+              <li><strong>Square ID</strong>: A1B2C3D4E5</li>
+              <li><strong>SKU</strong>: NEWITEM123</li>
+              <li><strong>Price</strong>: $14.99</li>
+              <li><strong>Status</strong>: Published</li>
+            </ul>
+          </div>
+
+          <!-- System -->
+          <div class="mv-log-item is-expanded">
+            <div class="mv-log-summary">
+              <span class="mv-log-icon">💻</span>
+              <span class="mv-log-time">2025-10-27 18:46:00</span>
+              <span class="mv-log-label">System Context</span>
+            </div>
+            <ul class="mv-log-details">
+              <li><strong>Plugin Version</strong>: 1.2.0</li>
+              <li><strong>WooCommerce</strong>: 9.2.1</li>
+              <li><strong>PHP</strong>: 8.2.12</li>
+              <li><strong>Square Env</strong>: Production</li>
+              <li><strong>Connected</strong>: Yes</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
