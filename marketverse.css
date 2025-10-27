@@ -255,3 +255,8 @@ a:hover{text-decoration:underline;}
   width: 1.2em;
 }
 
+.mv-log-item { border-bottom: 1px solid #222; padding: 6px; cursor:pointer; }
+.mv-log-item:hover { background:#1a1a1a; }
+.mv-log-details { background:#181818; border-left:3px solid #2A75FF; margin-top:4px; padding:6px; font-size:0.9em; }
+
+
