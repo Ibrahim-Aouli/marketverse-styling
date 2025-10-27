@@ -204,59 +204,69 @@ a:hover{text-decoration:underline;}
 .mv-hidden{display:none!important;}
 .mv-countdown{font-weight:500;font-size:13px;opacity:.75;margin-left:4px;}
 
+/* ===========================
+   LOG VIEWER
+   =========================== */
 .mv-log {
-  background: #101014;
-  color: #eee;
+  background: var(--mv-dark);
+  color: var(--mv-white);
   font-family: Consolas, monospace;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: var(--mv-radius);
+  padding: 16px;
+  max-height: 420px;
   overflow-y: auto;
-  max-height: 500px;
+  box-shadow: var(--mv-shadow-sm);
 }
 
 .mv-log-item {
-  border-bottom: 1px solid #222;
-  padding: 6px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 6px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.15s ease;
 }
-.mv-log-item:hover {
-  background: #1a1a1a;
-}
+.mv-log-item:hover { background: rgba(255,255,255,0.05); }
 
-.mv-log-item-header {
+.mv-log-summary {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-size: 14px;
 }
 
 .mv-log-time {
-  color: #999;
+  color: rgba(255,255,255,0.6);
   font-size: 0.85em;
   min-width: 140px;
 }
 
 .mv-log-label {
   flex: 1;
-  color: #fff;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
-.mv-log-details {
-  background: #181818;
-  margin-top: 4px;
-  border-left: 3px solid #2A75FF;
-  padding: 8px;
-  font-size: 0.9em;
-  overflow-x: auto;
-  white-space: pre-wrap;
-}
 .mv-log-icon {
   width: 1.2em;
 }
 
-.mv-log-item { border-bottom: 1px solid #222; padding: 6px; cursor:pointer; }
-.mv-log-item:hover { background:#1a1a1a; }
-.mv-log-details { background:#181818; border-left:3px solid #2A75FF; margin-top:4px; padding:6px; font-size:0.9em; }
+.mv-log-details {
+  display: none;
+  background: rgba(255,255,255,0.05);
+  margin-top: 6px;
+  padding: 10px;
+  border-left: 3px solid var(--mv-blue);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
 
+.mv-log-item.is-expanded .mv-log-details { display: block; }
 
+.mv-log-empty {
+  text-align: center;
+  padding: 24px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}

@@ -89,6 +89,81 @@
           label.textContent=` (${m}m ${s}s remaining)`;
         });
       },1000);
+    },
+
+    // =======================================================
+    // LOG VIEWER
+    // =======================================================
+    logViewer: {
+      el: null,
+      lastCount: 0,
+
+      init(selector = '#mv-log') {
+        this.el = document.querySelector(selector);
+        if (!this.el) return;
+        this.refresh(true);
+        setInterval(() => this.refresh(), 5000);
+      },
+
+      async refresh(force = false) {
+        if (!this.el) return;
+        const fd = new FormData();
+        fd.append('action', 'mv_sws_get_logs');
+        fd.append('_ajax_nonce', window.MVSWS?.nonce || '');
+
+        try {
+          const r = await fetch(window.MVSWS?.ajaxurl || 'admin-ajax.php', { method: 'POST', body: fd });
+          const j = await r.json();
+          const logs = j?.data?.logs || [];
+          if (!force && logs.length === this.lastCount) return;
+          this.lastCount = logs.length;
+          this.render(logs);
+        } catch (err) {
+          console.error('Error refreshing logs', err);
+        }
+      },
+
+      render(logs) {
+        if (!logs.length) {
+          this.el.innerHTML = '<div class="mv-log-empty">No log entries yet.</div>';
+          return;
+        }
+
+        const iconMap = {
+          info: 'ℹ️',
+          success: '✔️',
+          warn: '⚠️',
+          error: '❌',
+          sync: '🔄',
+          action: '⚙️'
+        };
+
+        // Group identical messages
+        const grouped = [];
+        for (const log of logs) {
+          const last = grouped[grouped.length - 1];
+          if (last && last.label === log.label) {
+            last.count = (last.count || 1) + 1;
+          } else grouped.push({ ...log });
+        }
+
+        this.el.innerHTML = grouped.map(l => {
+          const icon = iconMap[l.type] || '▶️';
+          const count = l.count ? ` ×${l.count}` : '';
+          const details = l.data
+            ? `<div class="mv-log-details"><pre>${typeof l.data === 'object' ? JSON.stringify(l.data, null, 2) : l.data}</pre></div>`
+            : '';
+          return `
+            <div class="mv-log-item" onclick="this.classList.toggle('is-expanded')">
+              <div class="mv-log-summary">
+                <span class="mv-log-icon">${icon}</span>
+                <span class="mv-log-time">${l.time}</span>
+                <span class="mv-log-label">${l.label}${count}</span>
+              </div>
+              ${details}
+            </div>`;
+        }).join('');
+      }
     }
   };
 
@@ -98,6 +173,7 @@
     MV.initLoadingButtons();
     MV.initProgress();
     MV.initCountdowns();
+    MV.logViewer.init();
   });
 
   window.MarketVerse = MV;
