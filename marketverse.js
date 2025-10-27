@@ -135,34 +135,41 @@
           warn: '⚠️',
           error: '❌',
           sync: '🔄',
+          system: '💻',
           action: '⚙️'
         };
 
-        // Group identical messages
-        const grouped = [];
-        for (const log of logs) {
-          const last = grouped[grouped.length - 1];
-          if (last && last.label === log.label) {
-            last.count = (last.count || 1) + 1;
-          } else grouped.push({ ...log });
-        }
+        const frag = document.createDocumentFragment();
+        logs.forEach(log => {
+          const wrap = document.createElement('div');
+          wrap.className = 'mv-log-item';
+          wrap.addEventListener('click', () => wrap.classList.toggle('is-expanded'));
 
-        this.el.innerHTML = grouped.map(l => {
-          const icon = iconMap[l.type] || '▶️';
-          const count = l.count ? ` ×${l.count}` : '';
-          const details = l.data
-            ? `<div class="mv-log-details"><pre>${typeof l.data === 'object' ? JSON.stringify(l.data, null, 2) : l.data}</pre></div>`
-            : '';
-          return `
-            <div class="mv-log-item" onclick="this.classList.toggle('is-expanded')">
-              <div class="mv-log-summary">
-                <span class="mv-log-icon">${icon}</span>
-                <span class="mv-log-time">${l.time}</span>
-                <span class="mv-log-label">${l.label}${count}</span>
-              </div>
-              ${details}
-            </div>`;
-        }).join('');
+          const head = document.createElement('div');
+          head.className = 'mv-log-summary';
+          head.innerHTML = `
+            <span class="mv-log-icon">${iconMap[log.type] || '▶️'}</span>
+            <span class="mv-log-time">${log.time}</span>
+            <span class="mv-log-label">${log.label}</span>
+          `;
+
+          wrap.appendChild(head);
+
+          if (log.data && log.data !== 'null' && log.data !== '') {
+            const details = document.createElement('pre');
+            details.className = 'mv-log-details';
+            details.textContent =
+              typeof log.data === 'object'
+                ? JSON.stringify(log.data, null, 2)
+                : log.data;
+            wrap.appendChild(details);
+          }
+
+          frag.appendChild(wrap);
+        });
+
+        this.el.innerHTML = '';
+        this.el.appendChild(frag);
       }
     }
   };

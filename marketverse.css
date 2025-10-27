@@ -270,3 +270,70 @@ a:hover{text-decoration:underline;}
   color: rgba(255,255,255,0.6);
   font-style: italic;
 }
+
+/* ===========================
+   LOG VIEWER
+   =========================== */
+.mv-log {
+  background: var(--mv-dark);
+  color: var(--mv-white);
+  font-family: Consolas, monospace;
+  border-radius: var(--mv-radius);
+  padding: 16px;
+  max-height: 420px;
+  overflow-y: auto;
+  box-shadow: var(--mv-shadow-sm);
+}
+
+.mv-log-item {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.mv-log-item:hover { background: rgba(255,255,255,0.05); }
+
+.mv-log-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.mv-log-time {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85em;
+  min-width: 140px;
+}
+
+.mv-log-label {
+  flex: 1;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.mv-log-icon {
+  width: 1.2em;
+}
+
+.mv-log-details {
+  display: none;
+  background: rgba(255,255,255,0.05);
+  margin-top: 6px;
+  padding: 10px;
+  border-left: 3px solid var(--mv-blue);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.mv-log-item.is-expanded .mv-log-details { display: block; }
+
+.mv-log-empty {
+  text-align: center;
+  padding: 24px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}
